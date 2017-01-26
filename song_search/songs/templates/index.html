@@ -4,40 +4,22 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet"/>
     <title>SongSearch</title>
 </head>
 <body>
-<h1>SongSearch</h1>
-<p>Type the name of an artist, album, song or lyric.</p>
-<form type="get" action=".">
-    <input id="search_box" type="text" name="search_box" placeholder="SongSearch...">
-    <h4>Search by
-        <button id="search_artist" type="submit">Artist</button>
-        <button id="search_album" type="submit">Album</button>
-        <button id="search_song" type="submit">Song</button>
-        <button id="search_lyrics" type="submit">Lyrics</button>
-    </h4>
-
-    {% if search_artist %}
-    <p>YAY</p>
-    {% endif %}
-
-
-    <!-- {% if found_entries %}
-    <p>You searched for "{{ query_string }}".</p>
-    <ul>
-        {% for i in found_entries %}
-        {{ i.uid }} {{ i.title }} {{ value|linebreaks }}
-        {% endfor %}
-    </ul>
-    {% endif %}
-
-    {% if query_string and not found_entries %}
-    <p>No results found.</p>
-    {% else %}
-    <p>Type a search query into the box above, and press "Submit" to search.</p>
-    {% endif %}
--->
+<div class="container text-center">
+    <h1>SongSearch</h1>
+    <p>Type the name of an artist, album, song or lyric.</p>
+    <form type="get" action=".">
+        <input id="search_box" type="text" name="search_box" placeholder="SongSearch...">
+        <h4>Search by
+            <button id="search_artist" type="submit">Artist</button>
+            <button id="search_album" type="submit">Album</button>
+            <button id="search_song" type="submit">Song</button>
+            <button id="search_lyrics" type="submit">Lyrics</button>
+        </h4>
+</div>
 
 </form>
 </body>
