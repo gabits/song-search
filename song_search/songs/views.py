@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -28,5 +27,9 @@ def search_songs(request):
         return render(request, 'index.html', context)
     else:
         context = {
-            'error': 'Type something for your search.'}
+            'error': 'Type something for your search.',
+        }
+        if search_filter:
+            context.update({'filter': request.GET['filter']})
+            print(context)
         return render(request, 'index.html', context)
