@@ -1,6 +1,9 @@
+{% load staticfiles %}
+
 <!DOCTYPE HTML>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
     <title>SongSearch</title>
 </head>
 <body>
@@ -9,11 +12,12 @@
 <form type="get" action=".">
     <input id="search_box" type="text" name="search_box" placeholder="SongSearch...">
     <h4>Search by
-    <button class="search_submit" type="submit">Artist</button>
-    <button class="search_submit" type="submit">Album</button>
-    <button class="search_submit" type="submit">Song</button>
-    <button class="search_submit" type="submit">Lyrics</button>
+        <button id="search_artist" type="submit">Artist</button>
+        <button id="search_album" type="submit">Album</button>
+        <button id="search_song" type="submit">Song</button>
+        <button id="search_lyrics" type="submit">Lyrics</button>
     </h4>
+
 </form>
 </body>
 </html>
