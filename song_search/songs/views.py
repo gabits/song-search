@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 
@@ -33,3 +34,7 @@ def search_songs(request):
             context.update({'filter': request.GET['filter']})
             print(context)
         return render(request, 'index.html', context)
+
+
+def previous(request):
+    return render(request, 'index.html')

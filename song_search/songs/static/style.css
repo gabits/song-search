@@ -1,3 +1,68 @@
-h1 {
-    color: green;
+body {
+    font-family: 'Arsenal', sans-serif;
+    background-color: #5EBF8B;
 }
+
+h1 {
+    color: #A117AB;
+    font-weight: 900;
+    text-shadow: -2px -2px #ffffff;
+    font-size: 6em;
+    margin-top: 1.5em;
+    padding: 0.3em;
+}
+
+h5 {
+    font-size: 1.5em;
+}
+
+h6 {
+    font-size: 1.2em;
+    color: #B2392C;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+td {
+    text-align: center
+}
+
+#search_box {
+    margin: 0.5em;
+    width: 25em;
+}
+
+#search-btn {
+    background-color: #A117AB;
+    color: #ffffff;
+    shadow: none
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+table {
+    margin-top: 1.5em;
+    color: #FF6859;
+}
+
+table th, table th td:hover {
+    background-color: #138F53;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+table td {
+    background-color: #ffffff;
+}
+
+label {
+    padding-left: 0.2em;
+    padding-right: 0.8em;
+}
+
