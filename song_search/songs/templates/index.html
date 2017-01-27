@@ -1,26 +1,16 @@
-{% load staticfiles %}
-
-<!DOCTYPE HTML>
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
-    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet"/>
-    <title>SongSearch</title>
-</head>
-<body>
-<div class="container text-center">
-    <h1>SongSearch</h1>
-    <p>Type the name of an artist, album, song or lyric.</p>
-    <form type="get" action=".">
-        <input id="search_box" type="text" name="search_box" placeholder="SongSearch...">
-        <h4>Search by
-            <button id="search_artist" type="submit">Artist</button>
-            <button id="search_album" type="submit">Album</button>
-            <button id="search_song" type="submit">Song</button>
-            <button id="search_lyrics" type="submit">Lyrics</button>
-        </h4>
-</div>
-
+{% extends 'base.html' %}
+{% block content %}
+<p>Type the name of an artist, album, song or lyric.</p>
+<h6>
+    {{ error }}
+</h6>
+<form method="get" action="search">
+    <input id="search_box" type="text" name="search_box" value="{{ search_box }}">
+    <h4>Search by</h4>
+    <input type="radio" name="filter" value="artist">Artist
+    <input type="radio" name="filter" value="album">Album
+    <input type="radio" name="filter" value="song">Song
+    <input type="radio" name="filter" value="lyrics">Lyrics
+    <input type="submit"><span class="glyphicon glyphicon-search"></span>
 </form>
-</body>
-</html>
+{% endblock %}
