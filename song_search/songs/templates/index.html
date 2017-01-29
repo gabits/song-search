@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<p>Type the name of an artist, album, song or lyric.</p>
+<h5>Type the name of an artist, album, song or lyric.</h5>
 <h6>
     {{ error }}
 </h6>
 <form method="get" action="search">
     <input id="search_box" type="text" name="search_box" value="{{ search_box }}">
-    <h4>Search by</h4>
-    <input type="radio" name="filter" value="artist" {% if filter == 'artist' %} checked {% endif %}>Artist
-    <input type="radio" name="filter" value="album" {% if filter == 'album' %} checked {% endif %}>Album
-    <input type="radio" name="filter" value="song" {% if filter == 'song' %} checked {% endif %}>Song
-    <input type="radio" name="filter" value="lyrics" {% if filter == 'lyrics' %} checked {% endif %}>Lyrics
-    <input type="submit"><span class="glyphicon glyphicon-search"></span>
+    <p>Search by
+        <input type="radio" name="filter" id="artist" value="artist" {% if filter == 'artist' %} checked {% endif %}>
+        <label for="artist">Artist</label>
+        <input type="radio" name="filter" id="album" value="album" {% if filter == 'album' %} checked {% endif %}>
+        <label for="album">Album</label>
+        <input type="radio" name="filter" id="song" value="song" {% if filter == 'song' %} checked {% endif %}>
+        <label for="song">Song</label>
+        <input type="radio" name="filter" id="lyrics" value="lyrics" {% if filter == 'lyrics' %} checked {% endif %}>
+        <label for="lyrics">Lyrics</label>
+        </p>
+    <input type="submit" value="Search" id="search-btn">
 </form>
 {% endblock %}
 </body>
