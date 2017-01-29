@@ -7,10 +7,12 @@
 <form method="get" action="search">
     <input id="search_box" type="text" name="search_box" value="{{ search_box }}">
     <h4>Search by</h4>
-    <input type="radio" name="filter" value="artist">Artist
-    <input type="radio" name="filter" value="album">Album
-    <input type="radio" name="filter" value="song">Song
-    <input type="radio" name="filter" value="lyrics">Lyrics
+    <input type="radio" name="filter" value="artist" {% if filter == 'artist' %} checked {% endif %}>Artist
+    <input type="radio" name="filter" value="album" {% if filter == 'album' %} checked {% endif %}>Album
+    <input type="radio" name="filter" value="song" {% if filter == 'song' %} checked {% endif %}>Song
+    <input type="radio" name="filter" value="lyrics" {% if filter == 'lyrics' %} checked {% endif %}>Lyrics
     <input type="submit"><span class="glyphicon glyphicon-search"></span>
 </form>
 {% endblock %}
+</body>
+</html>
