@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h5>Type the name of an artist, album, song or lyric.</h5>
+<h5>Type the name of an artist, song or lyric.</h5>
 <h6>
     {{ error }}
 </h6>
@@ -10,9 +10,7 @@
     <p>Search by
         <input type="radio" name="filter" id="artist" value="artist" {% if filter == 'artist' %} checked {% endif %}>
         <label for="artist">Artist</label>
-        <input type="radio" name="filter" id="album" value="album" {% if filter == 'album' %} checked {% endif %}>
-        <label for="album">Album</label>
-        <input type="radio" name="filter" id="song" value="song" {% if filter == 'song' %} checked {% endif %}>
+        <input type="radio" name="filter" id="song" value="song_name" {% if filter == 'song_name' %} checked {% endif %}>
         <label for="song">Song</label>
         <input type="radio" name="filter" id="lyrics" value="lyrics" {% if filter == 'lyrics' %} checked {% endif %}>
         <label for="lyrics">Lyrics</label>
