@@ -56,3 +56,7 @@ def previous(request):
 
 def manage(request):
     return render(request, 'manage.html')
+
+def details(request):
+
+    return render(request, 'details.html')
