@@ -28,6 +28,7 @@ def search_songs(request):
                 'artist': row.artist,
                 'song_name': row.song_name,
                 'lyrics': lyrics_preview,
+                'id': row.id,
             }
             results_list.append(dictionary)
         context = {
@@ -57,6 +58,8 @@ def previous(request):
 def manage(request):
     return render(request, 'manage.html')
 
-def details(request):
 
-    return render(request, 'details.html')
+def details(request):
+    song_id = Songs.objects.get(id)
+    song_info = Songs.objects.filter(id = song_id)
+    print(song_info)
