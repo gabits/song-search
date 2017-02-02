@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
+from models import Songs
 
 def index(request):
     return render(request, 'index.html')
@@ -8,19 +8,28 @@ def index(request):
 
 def search_songs(request):
     search_text = (request.GET['search_box']).strip()
-    search_filter = request.GET.has_key('filter')
-    if len(search_text) > 0 and search_filter:
-        context = {
-            'songs': [{
-                'name': 'Dancing Queen',
-                'artist': 'ABBA',
-                'album': 'ABBA',
-                'lyrics': 'You are the dancing queen',
+    has_search_filter = request.GET.has_key('filter')
+    if len(search_text) > 0 and has_search_filter:
+        results_list = []
+        selected_filter = request.GET['filter']
+        if selected_filter == 'artist':
+            filt = Songs.objects.filter(artist__icontains = search_text)
+        elif selected_filter == 'song_name':
+            filt = Songs.objects.filter(song_name__icontains = search_text)
+        else:
+            filt = Songs.objects.filter(lyrics__icontains = search_text)
+        for row in filt.order_by('artist', 'song_name'):
+            song_data = {
+                'artist': row.artist,
+                'song_name': row.song_name,
+                'lyrics': row.lyrics,
             }
-            ]
+            results_list.append(song_data)
+        context = {
+            'result': results_list
         }
         return render(request, 'results.html', context)
-    elif len(search_text) > 0 and not search_filter:
+    elif len(search_text) > 0 and not has_search_filter:
         context = {
             'error': 'Choose a filter for your search.',
             'search_box': request.GET['search_box'],
@@ -30,9 +39,8 @@ def search_songs(request):
         context = {
             'error': 'Type something for your search.',
         }
-        if search_filter:
+        if has_search_filter:
             context.update({'filter': request.GET['filter']})
-            print(context)
         return render(request, 'index.html', context)
 
 
