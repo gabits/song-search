@@ -18,13 +18,13 @@ def search_songs(request):
             filt = Songs.objects.filter(song_name__icontains = search_text)
         else:
             filt = Songs.objects.filter(lyrics__icontains = search_text)
-        for row in filt:
-            dictionary = {
+        for row in filt.order_by('artist', 'song_name'):
+            song_data = {
                 'artist': row.artist,
                 'song_name': row.song_name,
                 'lyrics': row.lyrics,
             }
-            results_list.append(dictionary)
+            results_list.append(song_data)
         context = {
             'result': results_list
         }
@@ -41,7 +41,6 @@ def search_songs(request):
         }
         if has_search_filter:
             context.update({'filter': request.GET['filter']})
-            print(context)
         return render(request, 'index.html', context)
 
 
