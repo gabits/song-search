@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from models import Songs
 
+
 def index(request):
     return render(request, 'index.html')
 
@@ -13,16 +14,20 @@ def search_songs(request):
         results_list = []
         selected_filter = request.GET['filter']
         if selected_filter == 'artist':
-            filt = Songs.objects.filter(artist__icontains = search_text)
+            filt = Songs.objects.filter(artist__icontains=search_text)
         elif selected_filter == 'song_name':
-            filt = Songs.objects.filter(song_name__icontains = search_text)
+            filt = Songs.objects.filter(song_name__icontains=search_text)
         else:
-            filt = Songs.objects.filter(lyrics__icontains = search_text)
+            filt = Songs.objects.filter(lyrics__icontains=search_text)
         for row in filt:
+            if len(row.lyrics) <= 100:
+                lyrics_preview = row.lyrics
+            else:
+                lyrics_preview = str(row.lyrics[:100]) + '...'
             dictionary = {
                 'artist': row.artist,
                 'song_name': row.song_name,
-                'lyrics': row.lyrics,
+                'lyrics': lyrics_preview,
             }
             results_list.append(dictionary)
         context = {

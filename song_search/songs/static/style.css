@@ -29,8 +29,9 @@ p {
     font-size: 1.5em;
 }
 
-td {
-    text-align: center
+label {
+    padding-left: 0.2em;
+    padding-right: 0.8em;
 }
 
 #search_box {
@@ -44,14 +45,27 @@ td {
     shadow: none
 }
 
+.glyphicon-cog {
+    padding-right: 0.5em;
+}
+
+
+/* Results page */
+
 a, a:hover, a:focus {
     text-decoration: none;
     color: #ffffff;
 }
 
+/* Results table */
+
 table {
     margin-top: 1.5em;
-    color: #FF6859;
+    color: #cd6859;
+}
+
+td {
+    text-align: center
 }
 
 table th, table th td:hover {
@@ -65,11 +79,20 @@ table td {
     background-color: #ffffff;
 }
 
-label {
-    padding-left: 0.2em;
-    padding-right: 0.8em;
+.table > tbody > tr > td {
+     vertical-align: middle;
 }
 
-.glyphicon-cog {
-    padding-right: 0.5em;
+#song-songname, #song-artist {
+    font-size: 1.1em;
+    font-weight: 900;
+}
+
+#song-artist {
+    color: #FF6859;
+}
+
+#song-lyrics {
+    font-style: italic;
+    font-weight: 200;
 }

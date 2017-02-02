@@ -15,9 +15,9 @@
         </tr>
         {% for song in result %}
         <tr>
-            <td>{{ song.song_name }}</td>
-            <td>{{ song.artist }}</td>
-            <td>{{ song.lyrics }}</td>
+            <td id="song-songname">{{ song.song_name }}</td>
+            <td id="song-artist">{{ song.artist }}</td>
+            <td id="song-lyrics">{{ song.lyrics }}</td>
         </tr>
         {% endfor %}
     </table>
