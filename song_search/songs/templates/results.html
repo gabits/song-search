@@ -4,9 +4,10 @@
 
 
 {% block content %}
-<a href="/"><h5>Previous</h5></a>
+
 
 <div class="container">
+    <a href="/"><h5><span class="glyphicon glyphicon-chevron-left"></span></h5></a>
     <table class="table table-bordered">
         <tr>
             <th>Song</th>
@@ -19,7 +20,8 @@
             <td id="song-songname">{{ song.song_name }}</td>
             <td id="song-artist">{{ song.artist }}</td>
             <td id="song-lyrics">{{ song.lyrics }}</td>
-            <td id="song-details"><a href="../details" name="song_id" value="{{ song.id }}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+            <td id="song-details"><a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
+                    class="glyphicon glyphicon-eye-open"></span></a></td>
         </tr>
         {% endfor %}
     </table>

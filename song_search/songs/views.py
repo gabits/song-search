@@ -47,7 +47,6 @@ def search_songs(request):
         }
         if has_search_filter:
             context.update({'filter': request.GET['filter']})
-            print(context)
         return render(request, 'index.html', context)
 
 
@@ -60,6 +59,10 @@ def manage(request):
 
 
 def details(request):
-    song_id = Songs.objects.get(id)
-    song_info = Songs.objects.filter(id = song_id)
-    print(song_info)
+    id = request.GET['id']
+    song_info = Songs.objects.get(pk=id)
+    context = {'artist': song_info.artist,
+               'song_name': song_info.song_name,
+               'lyrics': song_info.lyrics
+               }
+    return render(request, 'details.html', context)
