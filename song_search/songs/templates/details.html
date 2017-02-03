@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <a href="{{ request.META.HTTP_REFERER }}"><h5><span class="glyphicon glyphicon-chevron-left"></span></h5></a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td></td>
+            <td class="details-td"><b>Song Details</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="details-td"><b>Name of the Song</b></td>
+            </td>
+            <td>{{ song_name }}</td>
+        </tr>
+        <tr>
+            <td class="details-td"><b>Artist</b></td>
+            <td>{{ artist }}</td>
+        </tr>
+        <tr>
+            <td class="details-td"><b>Full Lyrics</b></td>
+            <td>{{ lyrics }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
