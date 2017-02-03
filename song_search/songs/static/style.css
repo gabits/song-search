@@ -111,3 +111,21 @@ table td {
 #song-details span {
     color: #FF6859;
 }
+
+/* Manage table */
+
+#manage-song {
+    min-width: 6em;
+}
+
+.glyphicon {
+    color: #A117AB;
+}
+
+.glyphicon:hover {
+    color: #cd6859;
+}
+
+.glyphicon-edit {
+    padding-right: 0.5em;
+}

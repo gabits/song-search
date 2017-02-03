@@ -1,4 +1,3 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from models import Songs
 
@@ -55,7 +54,24 @@ def previous(request):
 
 
 def manage(request):
-    return render(request, 'manage.html')
+    song_list = []
+    songs_db = Songs.objects.all()
+    for row in songs_db:
+        if len(row.lyrics) <= 100:
+            lyrics_preview = row.lyrics
+        else:
+            lyrics_preview = str(row.lyrics[:100]) + '...'
+        song_data = {
+            'artist': row.artist,
+            'song_name': row.song_name,
+            'lyrics': lyrics_preview,
+            'id': row.id,
+        }
+        song_list.append(song_data)
+    context = {
+        'all_songs': song_list
+    }
+    return render(request, 'manage.html', context)
 
 
 def details(request):
