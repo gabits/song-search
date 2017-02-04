@@ -47,10 +47,10 @@
         </tr>
         {% for song in result %}
         <tr>
-            <td id="song-songname">{{ song.song_name }}</td>
-            <td id="song-artist">{{ song.artist }}</td>
-            <td id="song-lyrics">{{ song.lyrics }}</td>
-            <td id="song-details"><a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
+            <td class="song-songname">{{ song.song_name }}</td>
+            <td class="song-artist">{{ song.artist }}</td>
+            <td class="song-lyrics">{{ song.lyrics }}</td>
+            <td class="song-details"><a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
                     class="glyphicon glyphicon-eye-open"></span></a></td>
         </tr>
         {% endfor %}

@@ -6,7 +6,6 @@
 <div class="container">
     <a href="/"><h5><span class="glyphicon glyphicon-chevron-left"></span></h5></a>
 
-
     <div class="pagination">
     <span class="step-links">
         {% if page.has_previous %}
@@ -37,9 +36,13 @@
         </tr>
         {% for song in page_songs %}
         <tr>
-            <td id="song-songname">{{ song.song_name }}</td>
-            <td id="song-artist">{{ song.artist }}</td>
-            <td id="song-lyrics">{{ song.lyrics }}</td>
+            <td class="song-songname">{{ song.song_name }}</td>
+            <td class="song-artist">{{ song.artist }}</td>
+            <td class="song-lyrics">
+                <span class="short-lyrics">{{ song.lyrics }}</span>
+                <div class="expanded-lyrics">{{ song.exp_lyrics }}</div>
+                <span class="suspension-points">{{ song.suspoints }}</span>
+            </td>
             <td id="manage-song"><a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
                     class="glyphicon glyphicon-edit"></span></a>
                 <a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
@@ -73,5 +76,16 @@
 
 </div>
 
+<script>
+$( ".short-lyrics" ).mouseover(function() {
+    $( this ).siblings( ".expanded-lyrics" ).css("display", "inline")
+    });
+$( ".short-lyrics" ).mouseout(function() {
+    $( this ).siblings( ".expanded-lyrics" ).css("display", "none")
+    });
+
+
+</script>
 
 {% endblock %}
+

@@ -123,11 +123,15 @@ def manage(request):
         if len(row.lyrics) <= 100:
             lyrics_preview = row.lyrics
         else:
-            lyrics_preview = str(row.lyrics[:100]) + '...'
+            lyrics_preview = str(row.lyrics[:80])
+            lyrics_expand = str(row.lyrics[:300])
+            suspoints = "..."
         song_dict = {
             'artist': row.artist,
             'song_name': row.song_name,
             'lyrics': lyrics_preview,
+            'exp_lyrics': lyrics_expand,
+            'suspoints': suspoints,
             'id': row.id,
         }
         all_page_songs.append(song_dict)
