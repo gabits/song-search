@@ -1,8 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+
 <div class="container">
     <a href="/"><h5><span class="glyphicon glyphicon-chevron-left"></span></h5></a>
+
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <a href="?page=1"><span class="glyphicon glyphicon-step-backward"></span></a>
+            <a href="?page={{ previous_100 }}"><span class="glyphicon glyphicon-fast-backward"></span></a>
+            <a href="?page={{ previous_10 }}"><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="?page={{ prev_page }}"><span class="glyphicon glyphicon-triangle-left"></span></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page.number }} of {{ last_page }}
+        </span>
+
+        {% if page.has_next %}
+            <a href="?page={{ next_page }}"><span class="glyphicon glyphicon-triangle-right"></span></a>
+            <a href="?page={{ next_10 }}"><span class="glyphicon glyphicon-forward"></span></a>
+            <a href="?page={{ next_100 }}"><span class="glyphicon glyphicon-fast-forward"></span></a>
+            <a href="?page={{ last_page }}"><span class="glyphicon glyphicon-step-forward"></span></a>
+        {% endif %}
+    </div>
+
     <table class="table table-bordered">
         <tr>
             <th>Song</th>
@@ -10,7 +35,7 @@
             <th>Lyrics</th>
             <th>Edit</th>
         </tr>
-        {% for song in all_songs %}
+        {% for song in page_songs %}
         <tr>
             <td id="song-songname">{{ song.song_name }}</td>
             <td id="song-artist">{{ song.artist }}</td>
@@ -18,9 +43,35 @@
             <td id="manage-song"><a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
                     class="glyphicon glyphicon-edit"></span></a>
                 <a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
-                    class="glyphicon glyphicon-trash"></span></a></td>
+                        class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
         {% endfor %}
     </table>
+
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <a href="?page=1"><span class="glyphicon glyphicon-step-backward"></span></a>
+            <a href="?page={{ previous_100 }}"><span class="glyphicon glyphicon-fast-backward"></span></a>
+            <a href="?page={{ previous_10 }}"><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="?page={{ prev_page }}"><span class="glyphicon glyphicon-triangle-left"></span></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page.number }} of {{ last_page }}
+        </span>
+
+        {% if page.has_next %}
+            <a href="?page={{ next_page }}"><span class="glyphicon glyphicon-triangle-right"></span></a>
+            <a href="?page={{ next_10 }}"><span class="glyphicon glyphicon-forward"></span></a>
+            <a href="?page={{ next_100 }}"><span class="glyphicon glyphicon-fast-forward"></span></a>
+            <a href="?page={{ last_page }}"><span class="glyphicon glyphicon-step-forward"></span></a>
+        {% endif %}
+    </div>
+
+
 </div>
+
+
 {% endblock %}
