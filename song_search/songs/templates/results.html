@@ -8,6 +8,36 @@
 
 <div class="container">
     <a href="/"><h5><span class="glyphicon glyphicon-chevron-left"></span></h5></a>
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page=1"><span
+                    class="glyphicon glyphicon-step-backward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ previous_100 }}"><span
+                    class="glyphicon glyphicon-fast-backward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ previous_10 }}"><span
+                    class="glyphicon glyphicon-backward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ prev_page }}"><span
+                    class="glyphicon glyphicon-triangle-left"></span></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page.number }} of {{ last_page }}
+        </span>
+
+        {% if page.has_next %}
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ next_page }}"><span
+                    class="glyphicon glyphicon-triangle-right"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ next_10 }}"><span
+                    class="glyphicon glyphicon-forward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ next_100 }}"><span
+                    class="glyphicon glyphicon-fast-forward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ last_page }}"><span
+                    class="glyphicon glyphicon-step-forward"></span></a>
+        {% endif %}
+    </div>
+
     <table class="table table-bordered">
         <tr>
             <th>Song</th>
@@ -17,14 +47,45 @@
         </tr>
         {% for song in result %}
         <tr>
-            <td id="song-songname">{{ song.song_name }}</td>
-            <td id="song-artist">{{ song.artist }}</td>
-            <td id="song-lyrics">{{ song.lyrics }}</td>
-            <td id="song-details"><a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
+            <td class="song-songname">{{ song.song_name }}</td>
+            <td class="song-artist">{{ song.artist }}</td>
+            <td class="song-lyrics">{{ song.lyrics }}</td>
+            <td class="song-details"><a href="../song-details?id={{ song.id }}" name="song_id" value="{{ song.id }}"><span
                     class="glyphicon glyphicon-eye-open"></span></a></td>
         </tr>
         {% endfor %}
     </table>
+
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page=1"><span
+                    class="glyphicon glyphicon-step-backward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ previous_100 }}"><span
+                    class="glyphicon glyphicon-fast-backward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ previous_10 }}"><span
+                    class="glyphicon glyphicon-backward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ prev_page }}"><span
+                    class="glyphicon glyphicon-triangle-left"></span></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page.number }} of {{ last_page }}
+        </span>
+
+        {% if page.has_next %}
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ next_page }}"><span
+                    class="glyphicon glyphicon-triangle-right"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ next_10 }}"><span
+                    class="glyphicon glyphicon-forward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ next_100 }}"><span
+                    class="glyphicon glyphicon-fast-forward"></span></a>
+            <a href="?search_box={{ search_box }}&filter={{ filter }}&page={{ last_page }}"><span
+                    class="glyphicon glyphicon-step-forward"></span></a>
+        {% endif %}
+    </div>
+
 </div>
 
 {% endblock %}
